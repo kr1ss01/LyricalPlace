@@ -1,0 +1,113 @@
+@import 'variables';
+.upload_wrap {
+    @include d-flex(center, space-between, row);
+    padding: 10px 20px;
+    width: 50%;
+    // border-radius: 15px;
+    background-color: $smooth_black;
+    color: $bright_white;
+    margin: 5px 0;
+    -webkit-box-shadow: 7px 0px 15px 0px #000000;
+    box-shadow: 7px 0px 15px 0px #000000;
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+    .upload_basic {
+        @include d-flex(center, flex-start, row);
+    }
+    .desc {
+        margin-left: 2rem;
+        font-size: 1.5rem;
+        max-width: 300px;
+        text-transform: uppercase;
+        @include d-flex(center, flex-start, row);
+        h4 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: inherit;
+            font-weight: 600;
+        }
+        .uploaded {
+            margin-left: 2ch;
+        }
+    }
+    .breakpoint_info {
+        display: none;
+    }
+    .arrow {
+        transition: 200ms linear;
+    }
+    .likes {
+        width: fit-content;
+        @include d-flex(center, center, row);
+    }
+    &:hover {
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.7);
+        justify-content: space-between !important;
+        .desc {
+            animation: smooth_letters 100ms 200ms linear 1 forwards;
+        }
+        .arrow {
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+@keyframes smooth_letters {
+    100% {
+        max-width: none;
+    }
+}
+
+@media all and (max-width: 1060px) {
+    .upload_wrap {
+        width: fit-content;
+    }
+}
+
+@media all and (max-width: 850px) {
+    .upload_wrap {
+        width: 100%;
+        .arrow {
+            display: none;
+        }
+        .desc {
+            @include d-flex(flex-start, flex-start, column);
+            font-size: .9rem;
+            text-align: left;
+            margin: 0;
+            margin-left: 2ch;
+            h4 {
+                margin: .1rem 0;
+                text-align: left;
+                width: 100%;
+            }
+            .uploaded {
+                margin-left: 0;
+            }
+        }
+        &:hover {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            justify-content: initial !important;
+            .desc {
+                animation: none !important;
+            }
+            .arrow {
+                transform: none;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 510px) {
+    .desc {
+        display: none !important;
+    }
+    .breakpoint_info {
+        display: block !important;
+        margin-left: 1ch;
+    }
+}

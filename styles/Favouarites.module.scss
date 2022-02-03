@@ -1,0 +1,108 @@
+@import 'variables';
+.fav_wrapp {
+    .fav_cont {
+        @include d-flex(center, space-between, row);
+        padding: 5px;
+        #arrow_left {
+            transform: rotateY(180deg);
+        }
+        .favouarites {
+            padding: 5px;
+            color: $bright_white;
+            background-color: $smooth_black;
+            -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+            box-shadow: 0px 10px 13px -7px #000000, 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+            transition: all 200ms ease-in-out;
+            cursor: pointer;
+            .song_title,
+            .song_artist {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                font-size: 1.2rem;
+                font-family: $font_family_montserrat;
+                font-weight: 600;
+                color: $bright_white;
+            }
+            .song_artist {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+            &:hover {
+                -webkit-box-shadow: 0px 10px 13px -7px $purple, 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+                box-shadow: 0px 10px 13px -7px $purple, 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+            }
+        }
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: inherit;
+        }
+    }
+    .circles,
+    .circles_breakpoint {
+        @include d-flex(center, center, row);
+        margin: 1ch 0 .5ch 0;
+        .circle {
+            cursor: pointer;
+            width: 10px;
+            height: 10px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: $black;
+            margin: 0 2.5px;
+            border: none;
+            outline: none;
+            transition: 200ms linear;
+        }
+    }
+    .btn_breakpoint {
+        display: none;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .fav_cont {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        button {
+            display: none !important;
+        }
+    }
+    .circles {
+        display: none !important;
+    }
+    .btn_breakpoint {
+        display: flex !important;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1ch 0;
+        #arrow_left {
+            transform: rotate(180deg);
+        }
+        button {
+            cursor: pointer;
+            background-color: initial;
+            border: none;
+            outline: none;
+            @include d-flex(center, center, row);
+        }
+    }
+}
+
+@media all and (max-width: 375px) {
+    .fav_cont {
+        span {
+            width: 160px !important;
+            height: 90px !important;
+        }
+        img {
+            display: block !important;
+        }
+        h3 {
+            width: 160px !important;
+        }
+    }
+}

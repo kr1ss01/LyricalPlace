@@ -1,0 +1,17 @@
+@import 'variables';
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: $font_family_jura;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}

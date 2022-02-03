@@ -1,0 +1,53 @@
+@import 'variables';
+@import 'SVG.animations';
+.svg {
+    @include d-flex(center, center, row);
+    background: $smooth_black;
+    h3 {
+        @include logo_a($smooth_black, $bright_white);
+        position: absolute;
+        z-index: 0;
+        animation: opacity_handler 10s linear infinite forwards;
+    }
+    path {
+        transition: all 300ms linear;
+        z-index: 2;
+    }
+    rect {
+        fill: $smooth_black;
+    }
+    #triangles {
+        perspective: 1000px;
+        perspective-origin: center;
+    }
+    #light_left {
+        // transform: translateY(25px) translateX(-40px);
+        animation: slide_in_out_light_left 5s linear 1s infinite alternate;
+        // animation: slide_in_out_light_left 5s linear 400ms infinite alternate;
+        z-index: 100;
+    }
+    #dark_right {
+        // transform: translateY(-25px) translateX(40px);
+        animation: slide_in_out_dark_right 5s linear 1s infinite alternate;
+        // animation: slide_in_out_dark_right 5s linear 100ms infinite alternate;
+    }
+    #dark_left {
+        // transform: translateY(-25px) translateX(-40px);
+        animation: slide_in_out_dark_left 5s linear 1s infinite alternate;
+        // animation: slide_in_out_dark_left 5s linear 500ms infinite alternate;
+    }
+    #light_right {
+        // transform: translateY(25px) translateX(40px);
+        animation: slide_in_out_light_right 5s linear 1s infinite alternate;
+        // animation: slide_in_out_light_right 5s linear 200ms infinite alternate;
+    }
+    #dark_bottom {
+        // transform: translateY(50px);
+        animation: slide_in_out_dark_bottom 5s linear 1s infinite alternate;
+        // animation: slide_in_out_dark_bottom 5s linear 300ms infinite alternate;
+    }
+    #light_top {
+        // transform: translateY(-50px);
+        animation: slide_in_out_light_top 5s linear 1s infinite alternate;
+    }
+}

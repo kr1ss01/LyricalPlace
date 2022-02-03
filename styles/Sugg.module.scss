@@ -1,0 +1,36 @@
+@import 'variables';
+#preview {
+    margin-top: 1rem;
+    background-color: $smooth_black;
+    border: 1px solid $bright_white;
+    color: $bright_white;
+    padding: .8rem 2ch;
+    @include d-flex(center, flex-start, row);
+    position: relative;
+    perspective: 100px;
+    perspective-origin: center;
+    #ranID {
+        color: $bright_white;
+        letter-spacing: .1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        font-family: $font_family_jura;
+    }
+    .vertical {
+        height: 30px;
+        background-color: $bright_white;
+        width: 2px;
+        margin: 0 1ch;
+        display: block;
+    }
+    #vertical_right {
+        margin-left: auto;
+    }
+    button {
+        border: none;
+        outline: none;
+        background-color: inherit;
+        @include d-flex(center, center, row);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,126 @@
+@import 'variables';
+@mixin layout_build {
+    background-color: $smooth_black;
+    color: $bright_white;
+    font-family: $font_family_jura;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: .5rem 1.5ch;
+    h2 {
+        margin-left: 3ch;
+        text-transform: capitalize;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-top: .2rem;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 0 2ch;
+        line-height: 1.3rem;
+    }
+}
+
+@mixin animation {
+    background-color: $smooth_black;
+    height: 100%;
+    @include d-flex(center, center, row);
+}
+
+.playlists {
+    @include page();
+    h1 {
+        @include line_through($purple, $smooth_black, $bright_white);
+        margin-bottom: 2rem;
+    }
+    .playlist_grid_main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 5px 5px;
+        grid-template-areas: "animation_1 animation_1 global_playlists global_playlists global_playlists global_playlists" "animation_1 animation_1 global_playlists global_playlists global_playlists global_playlists" "playlists_for_you playlists_for_you playlists_for_you playlists_for_you animation_2 animation_2" "playlists_for_you playlists_for_you playlists_for_you playlists_for_you animation_2 animation_2" "animation_3 animation_3 album_playlists album_playlists album_playlists album_playlists" "animation_3 animation_3 album_playlists album_playlists album_playlists album_playlists";
+    }
+    .global_playlists {
+        grid-area: global_playlists;
+        @include layout_build();
+    }
+    .playlists_for_you {
+        grid-area: playlists_for_you;
+        @include layout_build();
+    }
+    .album_playlists {
+        grid-area: album_playlists;
+        @include layout_build();
+    }
+    .animation_1 {
+        grid-area: animation_1;
+        @include animation();
+    }
+    .animation_2 {
+        grid-area: animation_2;
+        @include animation();
+        padding: 1rem 2rem;
+        p {
+            color: $bright_white;
+            font-family: $font_family_jura;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            transform: rotate(45deg);
+        }
+    }
+    .animation_3 {
+        grid-area: animation_3;
+        @include animation();
+    }
+}
+
+.a_wrapp {
+    text-decoration: none;
+    color: inherit;
+    flex: 0 0 33%;
+}
+
+.playlist_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+}
+
+// ! MEDIA QUERRIES
+@media all and (max-width: 1200px) {
+    .playlists {
+        width: 100% !important;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .playlists {
+        .playlist_grid_main {
+            display: flex !important;
+            flex-direction: column;
+            .animation_1,
+            .animation_2,
+            .animation_3 {
+                display: none !important;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .main_cont {
+        padding-top: 50px !important;
+    }
+    .playlist_wrapper {
+        flex-wrap: wrap;
+        width: fit-content !important;
+    }
+    .a_wrapp {
+        flex: 0 0 33% !important;
+        margin: 2ch auto;
+        width: fit-content !important;
+    }
+}

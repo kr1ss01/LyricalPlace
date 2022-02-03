@@ -1,0 +1,314 @@
+@import 'variables';
+@mixin api_res_div {
+    @include d-flex(center, space-between, row);
+    width: 100%;
+    height: 50px;
+    background-color: $purple_hover;
+    position: relative;
+    .api_res_div_msg {
+        width: 100%;
+        @include d-flex(center, center, row);
+        height: 50px;
+        h3 {
+            @include d-flex(center, center, row);
+            text-transform: uppercase;
+            letter-spacing: .1rem;
+            width: 100%;
+            padding-left: 1ch;
+        }
+        .progress_bar_cont {
+            position: absolute;
+            bottom: 0px;
+            z-index: 1;
+            left: 0;
+            width: calc(100% - 50px);
+            height: 5px;
+            background-color: $bright_white;
+            .progress_bar {
+                margin-left: auto;
+                background-color: $purple_hover;
+                height: 5px;
+                width: 0%;
+                animation: progress_bar 4s linear 1 forwards;
+            }
+        }
+        .api_negative {
+            color: $bright_white;
+        }
+        .api_possitive {
+            color: $bright_white;
+        }
+    }
+    button {
+        aspect-ratio: 1;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 0;
+        border-left: 1px solid $black;
+        @include d-flex(center, center, row);
+        position: relative;
+        cursor: pointer;
+        #img {
+            display: block;
+            opacity: 1;
+            transition: all 200ms linear;
+        }
+        #left,
+        #right {
+            opacity: 0;
+            width: 50%;
+            height: 2px;
+            background: $black;
+            position: absolute;
+            transition: all 250ms linear;
+        }
+        #left {
+            transform: rotateZ(45deg);
+        }
+        #right {
+            transform: rotateZ(-45deg);
+        }
+        &:hover {
+            #left,
+            #right {
+                opacity: 1;
+            }
+            #left {
+                animation: cross_left 250ms linear 1 forwards;
+            }
+            #right {
+                animation: cross_right 250ms linear 1 forwards;
+            }
+            #img {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@mixin api_res_div_MOBILE {
+    display: none !important;
+    color: $purple;
+    background-color: $purple_hover;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    h3 {
+        font-size: 1.1rem;
+        padding: 0 1ch;
+    }
+    .api_negative {
+        color: $bright_white;
+    }
+    .api_possitive {
+        color: $bright_white;
+    }
+    .progress_bar_cont_mobile {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background-color: $bright_white;
+        @include d-flex(center, flex-end, row);
+        .progress_bar_mobile {
+            width: 0%;
+            height: 5px;
+            background-color: $purple_hover;
+            animation: progress_bar 4s linear 1 forwards;
+        }
+    }
+}
+
+@mixin form {
+    position: relative;
+    @include d-flex(flex-start, center, column);
+    background-color: rgba($color: #000000, $alpha: 0.85);
+    color: $bright_white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5em 5em;
+    -webkit-box-shadow: 0px 0px 10px 1px $black;
+    box-shadow: 0px 0px 10px 1px $black;
+    h3 {
+        text-align: center;
+        width: 100%;
+    }
+    .submit {
+        @include d-flex(center, space-between, row);
+        width: 100%;
+        margin-top: 2em;
+        a {
+            text-decoration: none;
+            color: $bright_white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        button {
+            padding: .8rem 3rem;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-family: $font_family_jura;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            background-color: $purple;
+            color: $bright_white;
+            position: relative;
+            transition: all 300ms ease-in-out;
+            z-index: 1;
+            // Hover Effects
+            &::after,
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                z-index: -1;
+                width: 100%;
+                background-color: $black;
+                transition: transform 300ms linear;
+                // transition-delay: 500ms;
+                transform: scaleX(0);
+            }
+            &::before {
+                transform-origin: left;
+            }
+            &::after {
+                transform-origin: right;
+            }
+            &:hover::before,
+            &:focus::before,
+            &:hover::after,
+            &:focus::after {
+                // transform: scaleX(50%);
+                animation: fadeIn 300ms linear 1 forwards;
+            }
+            &:hover,
+            &:focus {
+                color: $bright_white;
+                -webkit-box-shadow: 0px 0px 10px 2px $bright_white;
+                box-shadow: 0px 0px 10px 2px $bright_white;
+            }
+        }
+    }
+    .small_red {
+        color: red;
+    }
+    .display_errors {
+        @include d-flex(flex-start, flex-start, column);
+    }
+    .small_d_none {
+        display: none;
+    }
+    .red_input {
+        border-color: red !important;
+    }
+    .red_box {
+        border-color: red !important;
+    }
+}
+
+@mixin inputs {
+    @include d-flex(flex-start, center, column);
+    min-height: 100px;
+    label {
+        font-size: 1.3rem;
+        text-transform: capitalize;
+    }
+    .input_wrapper {
+        @include d-flex(center, center, row);
+        input {
+            border: 1px solid $black;
+            height: 30px;
+            outline: none;
+            font-family: $font_family_jura;
+            font-weight: 400;
+            font-size: 1.2rem;
+            border-right: none;
+            // border-radius: 10px 0 0 10px;
+            padding-left: 10px;
+            min-width: 235px;
+            transition: all 250ms linear;
+            margin: 0;
+            &::placeholder {
+                color: $black;
+                opacity: .8;
+            }
+            &:hover,
+            &:focus,
+            &:focus-visible,
+            &:active {
+                -webkit-box-shadow: 0px 0px 10px 1px $black;
+                box-shadow: 0px 0px 10px 1px $black;
+            }
+        }
+        .img_wrapper {
+            border: 1px solid $black;
+            // border-radius: 0 10px 10px 0;
+            border-left: none;
+            outline: none;
+            padding: 0.29rem;
+            width: 30px;
+            @include d-flex(center, center, row);
+            transition: all 250ms linear;
+            height: 30px;
+            cursor: default;
+            background-color: $bright_white;
+            img {
+                border: none;
+                outline: none;
+                display: block;
+                border-radius: 0;
+                // background: $bright_white;
+            }
+            &:hover {
+                -webkit-box-shadow: 0px 0px 10px 1px $black;
+                box-shadow: 0px 0px 10px 1px $black;
+            }
+        }
+        button {
+            cursor: pointer !important;
+        }
+    }
+}
+
+@mixin flap($height, $width, $tranform_rotate_Y) {
+    width: $width;
+    height: $height;
+    background: linear-gradient(120deg, $purple, $purple_hover);
+    transform: rotateY($tranform_rotate_Y);
+    transition: all 300ms linear;
+    padding: 10px;
+    color: $bright_white;
+    header {
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        font-size: 1.4rem;
+    }
+    &:hover {
+        transform: rotateY(0deg);
+        height: 100% !important;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 10px 1px $black;
+        box-shadow: 0px 0px 10px 1px $black;
+    }
+    .hr {
+        width: 100%;
+        height: 2px;
+        background-color: $black;
+        margin: 5px 0;
+    }
+    .logo_span {
+        @include logo_a($purple, $bright_white);
+        @include d-flex(center, center, row);
+        width: 100%;
+        font-size: 1.9rem;
+        text-align: center;
+    }
+}

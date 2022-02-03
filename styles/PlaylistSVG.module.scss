@@ -1,0 +1,27 @@
+@import 'variables';
+.svg_main {
+    #grid_lines {
+        line {
+            stroke: $bright_white !important;
+            opacity: .3 !important;
+            animation: blink 1.7s linear;
+            animation-fill-mode: forwards;
+            animation-delay: 100ms;
+            animation-iteration-count: infinite;
+            @for $i from 1 through 14 {
+                &:nth-child(#{$i}) {
+                    animation-delay: $i * 150ms;
+                }
+            }
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

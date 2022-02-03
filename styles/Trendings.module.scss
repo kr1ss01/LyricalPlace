@@ -1,0 +1,126 @@
+@import 'variables';
+.main_trendings {
+    @include page;
+    @include d-flex(center, flex-start, column);
+    h1 {
+        @include line_through($purple, $smooth_black, $bright_white);
+        margin-bottom: 2rem;
+    }
+    .trendings {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px 5px;
+        grid-template-areas: "chart chart chart chart chart" "chart chart chart chart chart" "chart chart chart chart chart" "songs songs songs animation animation" "songs songs songs animation animation";
+        justify-items: stretch;
+        .chart {
+            grid-area: chart;
+            background-color: $smooth_black;
+            padding: .5rem 1rem;
+            color: $bright_white;
+        }
+        .songs {
+            grid-area: songs;
+            background-color: $smooth_black;
+            #now {
+                @include d-flex(center, center, row);
+            }
+            #incr_btn,
+            #incr_btn_breakpoint {
+                transform: rotateZ(180deg);
+            }
+            h2 {
+                color: $bright_white;
+                font-family: $font_family_jura;
+                font-size: 1.2rem;
+                font-weight: 600;
+                width: 100%;
+                text-align: left;
+                padding-left: 2ch;
+                text-transform: capitalize;
+            }
+            .nav_btns_trending {
+                border: none;
+                outline: none;
+                cursor: pointer;
+                margin: 0 auto;
+                width: 40px;
+                height: 40px;
+                aspect-ratio: 1;
+                background-color: $purple;
+                color: $bright_white;
+                @include d-flex(center, center, row);
+            }
+            .nav_btns_trending_breakpoint {
+                display: none;
+            }
+            .breakpoint_btns {
+                display: none;
+            }
+        }
+        .animation {
+            grid-area: animation;
+            background-color: $smooth_black;
+            @include d-flex(center, center, row);
+            // .animation_sect {
+            //     background-color: $smooth_black;
+            //     z-index: 100;
+            //     border: 3px solid $purple;
+            //     border-radius: 50%;
+            //     padding: 3rem;
+            // }
+        }
+    }
+}
+
+// ! MEDIA QUERRIES
+@media all and (max-width: 1200px) {
+    .main_trendings {
+        width: 100% !important;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media all and (max-width: 850px) {
+    .trendings {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .main_trendings {
+        padding-top: 60px !important;
+    }
+}
+
+@media all and (max-width: 550px) {
+    .main_trendings {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .songs {
+        padding-bottom: 2rem;
+        h3 {
+            width: 100% !important;
+            text-align: center !important;
+        }
+        .nav_btns_trending {
+            display: none !important;
+        }
+        .breakpoint_btns {
+            display: flex !important;
+            justify-content: space-around;
+            align-items: center;
+            .nav_btns_trending_breakpoint {
+                display: block !important;
+                background-color: initial;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    }
+}

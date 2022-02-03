@@ -1,0 +1,45 @@
+@import 'variables';
+.recom {
+    @include d-flex(flex-start, center, column);
+    .recom_btns {
+        @include d-flex(center, center, row);
+        width: 100%;
+        button {
+            // border: 1px solid $bright_white;
+            border: none;
+            outline: none;
+            font-family: $font_family_jura;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: $smooth_black;
+            height: 50px;
+            width: 50px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            @include d-flex(center, center, row);
+        }
+        #flip {
+            transform: rotateZ(180deg);
+        }
+    }
+    .dots {
+        @include d-flex(center, center, row);
+        width: 100%;
+        margin-top: 1rem;
+        button {
+            width: 10px;
+            cursor: pointer;
+            height: 10px;
+            border: none;
+            outline: none;
+            aspect-ratio: 1;
+            background: $bright_white;
+            margin: 1ch;
+            border-radius: 50%;
+        }
+        button:disabled {
+            background: $purple;
+        }
+    }
+}

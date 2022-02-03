@@ -1,0 +1,420 @@
+@import 'variables';
+.profile {
+    @include page();
+    .main_h1 {
+        @include line_through($purple, $smooth_black, $bright_white);
+        margin-bottom: 2rem;
+    }
+    .breakpoint_h1 {
+        display: none;
+    }
+    .grid_profile {
+        display: grid;
+        grid-auto-flow: row dense;
+        grid-auto-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 15px 5px;
+        grid-template-areas: "favouarites favouarites favouarites suggestions suggestions suggestions" "favouarites favouarites favouarites suggestions suggestions suggestions" "change_email change_email recomendations recomendations change_pwd change_pwd" "change_email change_email recomendations recomendations change_pwd change_pwd" ". . recomendations recomendations . ." ". . recomendations recomendations . .";
+    }
+    .cancel_favs {
+        background-color: $smooth_black !important;
+        color: $bright_white !important;
+        padding: 0 !important;
+    }
+    .favouarites {
+        grid-area: favouarites;
+        background-color: $smooth_black;
+        .no_favs {
+            @include d-flex(center, center, column);
+            margin: 0;
+            padding: 1rem 2rem;
+            font-family: $font_family_jura;
+            h3 {
+                margin: 0;
+                margin-bottom: 1rem;
+            }
+            a {
+                text-decoration: none;
+                cursor: pointer;
+                background-color: $bright_white;
+                padding: .5rem 1.5rem;
+                text-transform: capitalize;
+                color: $smooth_black;
+                position: relative;
+                overflow: hidden;
+                outline: none;
+                border: none;
+                font-size: 1.1rem;
+                font-weight: 500;
+                font-family: $font_family_jura;
+                margin-top: 1rem;
+                transition: background-color 150ms linear;
+                box-shadow: 0 8px 32px rgba($black, .2);
+                transition: all 300ms ease;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -200%;
+                    width: 200%;
+                    height: 100%;
+                    transform: skewX(-20deg);
+                    background-image: linear-gradient(to right, transparent, rgba($bright_white, .3), transparent);
+                }
+                &:hover:after {
+                    animation: shine 1.6s ease;
+                }
+                &:hover,
+                &:focus {
+                    background-color: $purple;
+                    color: $bright_white;
+                }
+                &:active {
+                    transform: translateY(1px);
+                    box-shadow: 0 4px 16px rgba($black, .2);
+                }
+            }
+        }
+    }
+    .suggestions {
+        grid-area: suggestions;
+        padding: 1rem 2ch;
+        // height: fit-content;
+        background-color: $smooth_black;
+        color: $bright_white;
+        // -webkit-box-shadow: 0px 0px 15px 0px rgba(102, 0, 204, 0.7);
+        // box-shadow: 0px 0px 15px 0px rgba(102, 0, 204, 0.7);
+        h3 {
+            font-family: $font_family_jura;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-top: 0;
+        }
+        .suggestions_exist {
+            @include d-flex(center, flex-start, column);
+            .nav_btns {
+                width: 40px;
+                height: 40px;
+                margin: 0 1ch;
+                background: inherit;
+                border: none;
+                outline: none;
+                position: relative;
+                cursor: pointer;
+                span {
+                    position: absolute;
+                    background: $bright_white;
+                    border-radius: 20px;
+                    transition: background 200ms linear;
+                }
+                #str8_left,
+                #str8_right {
+                    width: 23px;
+                    height: 3px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+                #up_left {
+                    width: 15px;
+                    height: 3px;
+                    transform: rotateZ(-35deg) translate(50%, 0);
+                    left: 0;
+                }
+                #down_left {
+                    width: 15px;
+                    height: 3px;
+                    transform: rotateZ(35deg) translate(50%, 0);
+                    left: 0;
+                }
+                #up_right {
+                    width: 15px;
+                    height: 3px;
+                    transform: rotateZ(-145deg) translate(50%, 0);
+                    right: 0;
+                }
+                #down_right {
+                    width: 15px;
+                    height: 3px;
+                    transform: rotateZ(145deg) translate(50%, 0);
+                    right: 0;
+                }
+                &:hover {
+                    span {
+                        background: rgb(226, 66, 66);
+                    }
+                }
+            }
+        }
+        .suggestions_not_exist_wrap {
+            @include d-flex(flex-start, flex-start, column);
+            .suggestions_not_exist {
+                padding: .1ch 2ch;
+                margin-top: 0;
+                a {
+                    color: $bright_white;
+                }
+            }
+            .suggestions_not_exist_div {
+                width: 700px;
+                background-color: $smooth_black;
+                height: 250px;
+                margin: 0 auto;
+                margin-top: auto;
+                @include d-flex(center, flex-start, row);
+            }
+        }
+    }
+    .change_email {
+        grid-area: change_email;
+    }
+    .change_pwd {
+        grid-area: change_pwd;
+    }
+    .upper_breakpoint {
+        display: block;
+    }
+    .down_breakpoint {
+        display: none;
+    }
+    .breakpoint_divs {
+        display: none;
+    }
+    .recomendations {
+        grid-area: recomendations;
+        background: $smooth_black;
+        height: fit-content;
+        padding: 1rem 2ch;
+        color: $bright_white;
+        @include d-flex(center, center, column);
+        min-width: 400px;
+        // -webkit-box-shadow: 0px 0px 15px 0px rgba(102, 0, 204, 0.7);
+        // box-shadow: 0px 0px 15px 0px rgba(102, 0, 204, 0.7);
+        h3 {
+            width: 100%;
+            text-align: center;
+            font-family: $font_family_jura;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-top: 0;
+        }
+    }
+    .change_email,
+    .change_pwd {
+        background: $smooth_black;
+        // background: rgba(255, 255, 255, 0.57);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        color: $bright_white;
+        backdrop-filter: blur(12.4px);
+        -webkit-backdrop-filter: blur(12.4px);
+        padding: 1rem 2rem;
+        @include d-flex(flex-start, flex-start, column);
+        // height: fit-content;
+        h3 {
+            font-family: $font_family_jura;
+            font-weight: 600;
+            font-size: 1.3rem;
+            width: 100%;
+            text-align: center;
+        }
+        form {
+            @include d-flex(flex-start, center, column);
+            width: 100%;
+            input {
+                font-family: $font_family_jura;
+                font-weight: 600;
+                font-size: 1.1rem;
+                padding-left: 1ch;
+                width: 100%;
+                margin-bottom: .5rem;
+                // border: 1px solid $smooth_black;
+                &:focus {
+                    outline-width: 0;
+                }
+            }
+        }
+        .form_btn_div {
+            @include d-flex(center, flex-end, row);
+            width: 100%;
+            button {
+                border: none;
+                outline: none;
+                cursor: pointer;
+                background: $bright_white;
+                padding: .5rem 1.5rem;
+                color: $smooth_black;
+                position: relative;
+                perspective: 1000px;
+                perspective-origin: center;
+                transition: all 300ms linear;
+                font-family: $font_family_jura;
+                font-weight: 600;
+                font-size: 1rem;
+                #main_email_span,
+                #main_pwd_span {
+                    display: block;
+                }
+                #secondary_email_span,
+                #secondary_pwd_span {
+                    display: flex;
+                    position: absolute;
+                    inset: 0 0 0 0;
+                    z-index: 100;
+                    background: $smooth_black;
+                    transform: translateY(50%) rotateX(-90deg);
+                    transition: all 300ms linear;
+                    font-family: $font_family_jura;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    @include d-flex(center, center, row);
+                    opacity: 0;
+                    color: $bright_white;
+                }
+                &:hover {
+                    #secondary_email_span,
+                    #secondary_pwd_span {
+                        display: flex !important;
+                        animation: box 300ms linear 1 forwards;
+                    }
+                }
+            }
+            button:disabled {
+                filter: blur(1px);
+            }
+        }
+        .pwd_errors_div {
+            .pwd_errors {
+                font-family: $font_family_jura;
+                font-weight: 400;
+                font-size: .9rem;
+                margin: .3rem 0;
+            }
+        }
+    }
+    .fav_card_wrapp {
+        @include d-flex(center, center, column);
+        h3 {
+            margin-bottom: 0;
+            color: $bright_white;
+            text-transform: capitalize;
+            font-size: 1.4rem;
+        }
+        .card_index_breakpoint {
+            @include d-flex(center, space-around, row);
+            width: 100%;
+            #left_arrow {
+                transform: rotate(180deg);
+            }
+            button {
+                border: none;
+                outline: none;
+                background-color: inherit;
+                cursor: pointer;
+            }
+            p {
+                color: $bright_white;
+            }
+        }
+        .card_fav_main {
+            margin-top: 1rem;
+            cursor: pointer;
+            border: 1px solid $bright_white;
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.7);
+            box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.7);
+            .img_wrap {
+                position: relative;
+            }
+            .content {
+                position: absolute;
+                inset: 0 0 0 0;
+                background-color: $smooth_black;
+                opacity: .7;
+                color: $bright_white;
+                padding: 1ch;
+            }
+        }
+    }
+}
+
+// ! MEDIA QUERRIES
+@media all and (max-width: 1200px) {
+    .profile {
+        width: 100% !important;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .main_h1 {
+        display: none !important;
+    }
+    .breakpoint_h1 {
+        display: block !important;
+        font-size: 1.5rem;
+        font-family: $font_family_jura;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .change_pwd,
+    .change_email {
+        height: 70% !important;
+        flex: 0 1 50%;
+    }
+    .recomendations {
+        height: 100% !important;
+    }
+    .grid_profile {
+        display: block !important;
+        flex-wrap: wrap;
+    }
+    .recomendations,
+    .favouarites {
+        flex: 0 1 45%;
+    }
+    .upper_breakpoint {
+        display: none !important;
+    }
+    .down_breakpoint {
+        display: block !important;
+        flex: 1 0 50%;
+        min-width: 350px;
+    }
+    .breakpoint_divs {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .profile {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .recomendations {
+        min-width: 0 !important;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .down_breakpoint {
+        min-width: 200px;
+    }
+    .card_fav_main {
+        .img_wrap {
+            span {
+                width: 200px !important;
+                height: 110px !important;
+            }
+        }
+        .content {
+            padding: 0.1ch !important;
+            overflow-y: hidden;
+            p {
+                margin: 0;
+            }
+        }
+    }
+}

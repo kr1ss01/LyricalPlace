@@ -1,0 +1,214 @@
+//
+// FONT VARIABLES
+//
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&family=Jura:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
+$font_family_advent: 'Advent Pro',
+sans-serif;
+$font_family_jura: 'Jura',
+sans-serif;
+$font_family_montserrat: 'Montserrat',
+sans-serif;
+$font_family_open_sans_condensed: 'Open Sans Condensed',
+sans-serif;
+//
+// COLOR VARIABLES
+//
+$bright_white: #fff;
+$black: #000;
+$smooth_black: #292929;
+$purple: #6600CC;
+$purple_hover: #6600EE;
+//
+// MIXINS
+//
+// PAGE LAYOUT MIXIN
+@mixin page {
+    cursor: default;
+    min-height: 100vh;
+    width: 1200px;
+    background-color: $bright_white;
+    padding: 95px 10px 20px 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+// DISPLAY FLEX MIXIN
+@mixin d-flex($align,
+$justify,
+$direction) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+// LOGO MIXIN
+@mixin logo_a($color_inside,
+$color_outside) {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: .3rem;
+    color: $color_inside;
+    text-shadow: 2px 2px 0 $color_outside, 2px -2px 0 $color_outside, -2px 2px 0 $color_outside, -2px -2px 0 $color_outside, 2px 0px 0 $color_outside, 0px 2px 0 $color_outside, -2px 0px 0 $color_outside, 0px -2px 0 $color_outside;
+}
+
+// H1 MIXIN
+@mixin h1($font_size,
+$font_familly,
+$color) {
+    width: 100%;
+    text-align: center;
+    color: $color;
+    font-size: $font_size;
+    font-family: $font_familly;
+    margin: 0;
+}
+
+// BASIC INPUT MIXIN 
+@mixin input_container_sign_up {
+    height: 100%;
+    width: 100%;
+    background: $bright_white;
+    padding: 5px 10px;
+    @include d-flex(flex-start,
+    center,
+    column);
+    label {
+        color: $black;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        // text-decoration: underline;
+    }
+    .input_wrappers {
+        @include d-flex(center,
+        center,
+        row);
+        input {
+            border: 1px solid $purple;
+            outline: none;
+            font-family: $font_family_jura;
+            font-weight: 400;
+            font-size: 1.2rem;
+            // border-right: 1px solid $black;
+            border-radius: 30px;
+            padding-left: 10px;
+            min-width: 235px;
+            transition: all 250ms linear;
+            &::placeholder {
+                color: $black;
+                opacity: .8;
+            }
+            &:hover,
+            &:focus,
+            &:focus-visible,
+            &:active {
+                -webkit-box-shadow: 0px 0px 10px 1px rgba(102, 0, 238, 0.8);
+                box-shadow: 0px 0px 10px 1px rgba(102, 0, 238, 0.8);
+            }
+        }
+        span {
+            background: $bright_white;
+            display: block;
+            height: 25px;
+            @include d-flex(center,
+            center,
+            row);
+            padding: 5px;
+        }
+    }
+    .display_errors {
+        color: $bright_white;
+        @include d-flex(flex-start,
+        center,
+        column);
+        small {
+            display: inline-block;
+            padding-left: 7.5px;
+        }
+        .small_red {
+            color: red;
+        }
+        .small_green {
+            color: $black;
+            text-decoration: line-through;
+        }
+        .small_d_none {
+            display: none;
+        }
+    }
+}
+
+@mixin line_through($line_color,
+$font_color,
+$span_bg_color) {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $font_color;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    border-bottom: 3px solid $line_color;
+    line-height: 0.1em;
+    span {
+        z-index: 2;
+        background-color: $span_bg_color;
+        padding: 2.5px 1ch;
+        -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.7);
+        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.7);
+    }
+}
+
+@mixin side_button_vertical_orient($border_color,
+$bg_color,
+$fg_color,
+$rotateY_deg,
+$top,
+$top_hover) {
+    position: absolute;
+    cursor: pointer;
+    background-color: $bg_color;
+    top: $top;
+    right: 0;
+    transform: translateX(100%) rotateY($rotateY_deg);
+    z-index: 100;
+    padding: 5px;
+    height: 120px;
+    padding: 10px 0;
+    @include d-flex(center,
+    space-between,
+    row);
+    transition: all 200ms linear;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: $fg_color;
+    text-decoration: none;
+    font-family: $font_family_jura;
+    border-right: 1px solid $border_color;
+    filter: blur(1px);
+    span {
+        transform: rotateZ(90deg);
+    }
+    .img {
+        margin: 10px;
+        padding: 10px;
+    }
+    &:hover,
+    &:focus {
+        top: $top_hover;
+        filter: blur(0);
+        transform: translateX(100%);
+    }
+}
+
+// 
+// GLOBAL CLASSES
+// 
+.spinner_box {
+    @include d-flex(center,
+    center,
+    row);
+    width: 100%;
+    margin: 5px;
+}

@@ -1,0 +1,239 @@
+@import 'variables';
+.lyrics {
+    @include page;
+    @include d-flex(center, baseline, column);
+    .main_h1 {
+        @include line_through($purple, $purple, $bright_white);
+    }
+    .breakpoint_h1 {
+        display: none;
+    }
+    .display_logs {
+        position: fixed;
+        z-index: 1000;
+        bottom: 0;
+        padding: 20px 10px;
+        background-color: $bright_white;
+        margin-bottom: 5px;
+        -webkit-box-shadow: 0px 0px 15px 5px rgba(102, 0, 204, 0.7);
+        box-shadow: 0px 0px 15px 5px rgba(102, 0, 204, 0.7);
+        font-size: 1.2rem;
+        color: $purple;
+        font-weight: 600;
+        transform: translateY(1000%);
+        animation: slide_up 600ms ease-out 100ms 1 forwards;
+    }
+    .lyrics_display {
+        background-color: $bright_white;
+        color: $smooth_black;
+        padding: 10px 20px;
+        -webkit-box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        width: 800px;
+        margin-top: 2rem;
+        transform: rotateY(0deg);
+        transition: 500ms linear;
+        position: relative;
+        @include d-flex(flex-start, baseline, column);
+        perspective: 1000px;
+        perspective-origin: right;
+        #info_song {
+            color: #777;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .preview_btn:hover {
+            opacity: 0;
+        }
+        .lyrics_p {
+            white-space: pre-wrap;
+            font-weight: 600;
+        }
+        .img_top {
+            width: 100%;
+        }
+        .expand {
+            // position: absolute;
+            // cursor: pointer;
+            // background-color: $bright_white;
+            // top: 4px;
+            // right: 0;
+            // transform: translateX(100%) rotateY(15deg);
+            // z-index: 100;
+            // padding: 5px;
+            // height: 120px;
+            // padding: 10px 0;
+            // @include d-flex(center, space-between, row);
+            // transition: 200ms linear;
+            // writing-mode: vertical-rl;
+            // text-orientation: mixed;
+            // color: $black;
+            // text-decoration: none;
+            // font-family: $font_family_jura;
+            // border-right: 1px solid red;
+            // filter: blur(1px);
+            // span {
+            //     transform: rotateZ(90deg);
+            // }
+            // .img {
+            //     margin: 10px;
+            //     padding: 10px;
+            // }
+            // &:hover,
+            // &:focus {
+            //     top: 0;
+            //     filter: blur(0);
+            //     transform: translateX(100%);
+            // }
+            @include side_button_vertical_orient(red, $bright_white, $black, 15deg, 4px, 0);
+        }
+        .fav {
+            position: absolute;
+            cursor: pointer;
+            background-color: $bright_white;
+            display: block;
+            top: 130px;
+            right: 0;
+            transform: translateX(100%) rotateY(25deg);
+            @include d-flex(center, center, row);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transition: 200ms linear;
+            filter: blur(1px);
+            z-index: 100;
+            border: none;
+            border-right: 1px solid $purple;
+            padding: 2.5px 3px 2.5px 0;
+            outline: none;
+            &:hover,
+            &:focus {
+                top: 125px;
+                filter: blur(0);
+                transform: translateX(100%);
+            }
+        }
+        .like {
+            position: absolute;
+            cursor: pointer;
+            background-color: $bright_white;
+            display: block;
+            top: 165px;
+            right: 0;
+            transform: translateX(100%) rotateY(25deg);
+            @include d-flex(center, center, row);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transition: 200ms linear;
+            filter: blur(1px);
+            z-index: 100;
+            border: none;
+            border-right: 1px solid orange;
+            padding: 2.5px 3px 2.5px 0;
+            outline: none;
+            &:hover,
+            &:focus {
+                top: 160px;
+                filter: blur(0);
+                transform: translateX(100%);
+            }
+        }
+        .expand_breakpoint,
+        .like_breakpoint,
+        .fav_breakpoint {
+            display: none;
+        }
+        #likes {
+            @include d-flex(center, flex-start, row);
+        }
+    }
+}
+
+@keyframes slide_up {
+    0% {
+        transform: translateY(500%);
+    }
+    90% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+// ! MEDIA QUERRIES
+@media all and (max-width: 1200px) {
+    .lyrics {
+        width: 100% !important;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .main_h1 {
+        display: none !important;
+    }
+    .breakpoint_h1 {
+        display: block !important;
+        font-size: 1.5rem;
+        font-family: $font_family_jura;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+@media all and (max-width: 850px) {
+    .lyrics_display {
+        width: 100% !important;
+    }
+    .fav,
+    .like,
+    .expand {
+        display: none !important;
+    }
+    .expand_breakpoint,
+    .like_breakpoint,
+    .fav_breakpoint {
+        display: flex !important;
+    }
+    .expand_breakpoint {
+        @include d-flex(center, space-between, row);
+        background-color: $smooth_black;
+        color: $bright_white;
+        text-decoration: none;
+        padding: 1ch 2ch;
+        width: 150px;
+        cursor: pointer;
+        height: 50px;
+        border-top: 1px solid red;
+    }
+    .like_breakpoint,
+    .fav_breakpoint {
+        @include d-flex(center, center, row);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: $smooth_black;
+        padding: 1ch 2ch;
+        height: 50px;
+    }
+    .like_breakpoint {
+        border-top: 1px solid orange;
+    }
+    .fav_breakpoint {
+        border-top: 1px solid $purple;
+    }
+    .breakpoint_btns_media {
+        width: 100%;
+        @include d-flex(center, space-between, row);
+        div {
+            @include d-flex(center, flex-end, row);
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .main_cont {
+        padding-top: 50px !important;
+    }
+}

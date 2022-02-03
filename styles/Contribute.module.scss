@@ -1,0 +1,145 @@
+@import 'variables';
+// Variables
+$border_color: rgb(201, 199, 199);
+// SCSS
+.contr {
+    @include page;
+    @include d-flex(center, baseline, column);
+    perspective: 1000px;
+    perspective-origin: center;
+    h1 {
+        text-align: center;
+        width: 100%;
+        text-transform: uppercase;
+    }
+    .preview_btn {
+        position: absolute;
+        cursor: pointer;
+        top: 10px;
+        right: 20px;
+        width: fit-content;
+        height: 35px;
+        border: none;
+        outline: none;
+        font-family: $font_family_jura;
+        font-weight: 400;
+        font-size: 1.2rem;
+        background-color: $purple;
+        color: $bright_white;
+        padding: 0rem 1rem;
+        @include d-flex(center, center, row);
+        transition: 200ms linear;
+        z-index: 100;
+        &:hover {
+            background-color: $purple_hover;
+        }
+    }
+    form {
+        background-color: $bright_white;
+        color: $smooth_black;
+        padding: 10px 20px;
+        -webkit-box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        width: 800px;
+        transform: rotateY(0deg);
+        transition: 500ms linear;
+        position: relative;
+        legend {
+            font-family: $font_family_jura;
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-left: 1ch;
+        }
+        input {
+            border: 1px solid $border_color;
+            outline: none;
+            background-color: $bright_white;
+            width: 300px;
+            height: 25px;
+            font-size: 1.1rem;
+            padding-left: .9ch;
+            margin: .1ch 0 1ch 0;
+            font-family: $font_family_jura;
+        }
+        textarea {
+            resize: none;
+            width: 100%;
+            font-size: 16px;
+            font-family: $font_family_jura;
+            border: 1px solid $border_color;
+            outline: none;
+            padding: .2ch .3ch 0 .3ch;
+            margin: .1ch 0 1ch 0;
+        }
+        .bottom {
+            @include d-flex(center, flex-end, row);
+            .submit_contr {
+                float: right;
+                cursor: pointer;
+                background-color: $purple;
+                color: $bright_white;
+                padding: 10px 20px;
+                font-family: $font_family_jura;
+                font-weight: 600;
+                border: none;
+                outline: none;
+                font-size: 1.2rem;
+                transition: 200ms linear;
+                &:hover {
+                    background-color: $purple_hover;
+                }
+            }
+        }
+    }
+    .prev_div {
+        background-color: $bright_white;
+        color: $smooth_black;
+        padding: 10px 20px;
+        -webkit-box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+        width: 800px;
+        transform: rotateY(0deg);
+        transition: 500ms linear;
+        position: relative;
+        display: none;
+        @include d-flex(center, baseline, column);
+        .preview_btn:hover {
+            opacity: 0;
+        }
+        .lyrics_p {
+            white-space: pre-wrap;
+            font-weight: 600;
+        }
+    }
+}
+
+.prev_div_visible {
+    background-color: $bright_white;
+    color: $smooth_black;
+    padding: 10px 20px;
+    -webkit-box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.7);
+    width: 800px;
+    transform: rotateY(0deg);
+    transition: 500ms linear;
+    position: relative;
+    display: block !important;
+    @include d-flex(center, baseline, column);
+}
+
+.prev_div_gone {
+    display: none !important;
+}
+
+.animation_form {
+    animation: flip_form 350ms linear 1 forwards;
+}
+
+@keyframes flip_form {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}

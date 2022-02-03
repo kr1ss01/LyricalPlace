@@ -1,0 +1,125 @@
+@import 'variables';
+// * LIGHT LEFT TRIANGLE
+@keyframes slide_in_out_light_left {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: .5;
+    }
+    70% {
+        transform: translateX(0) translateY(0);
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(25px) translateX(-40px);
+        opacity: 1;
+    }
+}
+
+// * DARK RIGHT TRIANGLE
+@keyframes slide_in_out_dark_right {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-25px) translateX(40px);
+        opacity: .5;
+    }
+}
+
+// * DARK LEFT TRIANGLE 
+@keyframes slide_in_out_dark_left {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-25px) translateX(-40px);
+        opacity: .5;
+    }
+}
+
+// * LIGHT RIGHT TRIANGLE
+@keyframes slide_in_out_light_right {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: .5;
+    }
+    70% {
+        transform: translateX(0) translateY(0);
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(25px) translateX(40px);
+        opacity: 1;
+    }
+}
+
+// * DARK BOTTOM TRIANGLE
+@keyframes slide_in_out_dark_bottom {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: .5;
+    }
+}
+
+// * LIGHT TOP TRIANGLE
+@keyframes slide_in_out_light_top {
+    0% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+    70% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+}
+
+// * LYRICAL PLACE TEXT
+@keyframes opacity_handler {
+    0% {
+        opacity: 0;
+    }
+    55% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    59% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    60% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    75% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,6 @@
+<svg width="700" height="250" viewBox="0 0 700 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="animation">
+        <rect width="700" height="250" fill="#292929"/>
+        <rect id="suare_1" opacity="0.9" x="15" y="92" width="75" height="75" fill="#6633CC"/>
+    </g>
+</svg>
