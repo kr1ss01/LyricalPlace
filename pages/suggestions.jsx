@@ -178,11 +178,19 @@ export default class suggestions extends Component {
                     <h1 className={style.main_h1}><span>{lang == "EN" ? "Current Suggestions" : "Τρέχουσες Προτάσεις"}</span></h1>
                     <h1 className={style.breakpoint_h1}>{lang == "EN" ? "Current Suggestions" : "Τρέχουσες Προτάσεις"}</h1>
                     <div className={style.info_sugg}>
+                        {lang === "EN" ?
                         <p>
-                            Here members from our community can suggest songs they like and want to see the lyrics of. We will make anything we can to provide lyrics the for this song as soon as possible. 
+                            Here members from our community can suggest songs they like and want to see the lyrics of. We will make anything we can to provide lyrics for this song as soon as possible. 
                             <br />
                             Members can also upvote a suggestion they might like and want to see, to make the admins review it faster. 
                         </p>
+                        : 
+                        <p>
+                            Εδώ μπορείς να προτείνεις τραγούδια που θα ήθελες να δείες τους στίχους τους. Θα κάνουμε ό,τι μπορούμε για να φέρουμε στην σελίδα τους στίχους απ' το αγαπημένο σου τραγούδι.
+                            <br />
+                            Τα μέλη της σελίδας μπορούν επίσης να κάνουν λάικ σε Τρέχουσες Προτάσεις άλλων χρηστών, έτσι ώστε οι διαχειριστές να το δούν γρηγορότερα.
+                        </p>
+                        }
                     </div>
                     {message != 200 || data.length < 1 ? 
                         <div className={style.no_active_suggestions}>
@@ -213,15 +221,15 @@ export default class suggestions extends Component {
                     <button type='button' className={style.preview_btn} onClick={() => this.handleAnimations("form")} disabled={isAuth ? false : true}>{lang == "EN" ? "Suggestions" : "Προτάσεις"}</button>
                     <div className={style.form_inputs}>
                         <div className={style.input_wrap}>
-                            <input type="text" placeholder='Author' id='author' name='author' onChange={this.handleOnChangeInput} />
+                            <input type="text" placeholder={lang === "EN" ? 'Author' : 'Τραγουδιστής'} id='author' name='author' onChange={this.handleOnChangeInput} />
                             <span className={style.img_wrap}><Image src={MIC} alt='Microphone Icon' /></span>
                         </div>
                         <div className={style.input_wrap}>
-                            <input type="text" placeholder='Title' id='title' name='title' onChange={this.handleOnChangeInput} />
+                            <input type="text" placeholder={lang === "EN" ? 'Title' : 'Τίτλος'} id='title' name='title' onChange={this.handleOnChangeInput} />
                             <span className={style.img_wrap}><Image src={WAVE} alt='Microphone Icon' /></span>
                         </div>
                         <div className={style.input_wrap}>
-                            <input type="text" placeholder='Features' id='fts' name='fts' onChange={this.handleOnChangeInput} />
+                            <input type="text" placeholder={lang === "EN" ? 'Fts' : 'Συμμετοχές'} id='fts' name='fts' onChange={this.handleOnChangeInput} />
                             <span className={style.img_wrap}><Image src={STAR} alt='Microphone Icon' /></span>
                         </div>
                     </div>

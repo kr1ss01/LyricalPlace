@@ -14,6 +14,19 @@ export default class Nav extends Component {
         search: "",
     }
 
+    closeNav = () => {
+        const { handleDropDown } = this.context;
+
+        handleDropDown();
+    }
+
+    logOutInit = () => {
+        const { handleDropDown, logOut } = this.context;
+
+        handleDropDown();
+        logOut();
+    }
+
     handleSubmition = (e) => {
         e.preventDefault();
     } 
@@ -87,28 +100,28 @@ export default class Nav extends Component {
                         <div className={style.hr}></div>
                         <ul className={style.nav_ul_mobile} role="navigation" aria-label={"Mobile Navigation Menu"}>
                             {isAuth ?
-                                <li>
+                                <li onClick={this.closeNav}>
                                     <Link href={`/${userData.uid}`} role={"link"}>{lang === "EN" ? "Profile" : "Προφίλ"}</Link>
                                 </li>
                                 : 
                                 ""
                             }
-                            <li>
+                            <li onClick={this.closeNav}>
                                 <Link href="/explore" role={"link"}>{lang === "EN" ? "Explore" : "Εξερεύνηση"}</Link>
                             </li>
-                            <li>
+                            <li onClick={this.closeNav}>
                                 <Link href="/trendings" role={"link"}>{lang === "EN" ? "Trendings" : "Τάσεις"}</Link>
                             </li>
-                            <li> 
+                            <li onClick={this.closeNav}> 
                                 <Link href="/playlists" role={"link"}>Playlists</Link>
                             </li>
-                            <li>
+                            <li onClick={this.closeNav}>
                                 <Link href="/suggestions" role={"link"}>{lang === "EN" ? "Suggestions" : "Προτεινόμενα"}</Link>
                             </li>
                         </ul>
                         {isAuth ?
                             <div className={style.log_out_cont_mobile} role={"button"}>
-                                <button onClick={logOut} id={style.btn_log_out} role={"button"}>{lang === "EN" ? "Log Out" : "Αποσύνδεση"}</button>
+                                <button onClick={this.logOutInit} id={style.btn_log_out} role={"button"}>{lang === "EN" ? "Log Out" : "Αποσύνδεση"}</button>
                             </div>
                         : ""}
                     </header>

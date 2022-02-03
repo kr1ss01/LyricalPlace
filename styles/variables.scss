@@ -18,6 +18,14 @@ $black: #000;
 $smooth_black: #292929;
 $purple: #6600CC;
 $purple_hover: #6600EE;
+// 
+// FONT
+//
+@font-face {
+    font-family: 'Jura', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+}
+
 //
 // MIXINS
 //
