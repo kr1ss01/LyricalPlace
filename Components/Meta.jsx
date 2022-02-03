@@ -12,7 +12,11 @@ const Meta = ({ title, keywords, description, page_topic }) => {
         <meta name="audience" content="Everyone" />
         <meta name="robots" content="index, follow" />
         <meta charSet='utf-8' />
-        <link rel='icon' href='/Lyrical_place_icon_main.svg' />
+        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"></link>
+        <link rel='icon' type='image/png' sizes='32x32' href='/images/favicon-32x32.png' ></link>
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"></link>
+        <link rel="manifest" href="/images/site.webmanifest"></link>
         <title>{title} || Lyrical Place</title>
     </Head>
   )
