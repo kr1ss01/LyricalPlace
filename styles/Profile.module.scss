@@ -157,12 +157,31 @@
                 }
             }
             .suggestions_not_exist_div {
-                width: 700px;
+                width: 100%;
+                @include d-flex(center, center, row);
                 background-color: $smooth_black;
-                height: 250px;
+                font-size: 2rem;
+                height: fit-content;
                 margin: 0 auto;
                 margin-top: auto;
-                @include d-flex(center, flex-start, row);
+                .animation_div_letters {
+                    font-family: $font_family_jura;
+                    padding: 1rem 0;
+                    @include d-flex(center, center, row);
+                    overflow-x: hidden;
+                    div {
+                        transform: translateX(-1000px);
+                        animation: letter_in 1s linear;
+                        animation-fill-mode: forwards;
+                        animation-delay: 100ms;
+                        animation-iteration-count: 1;
+                        @for $i from 1 through 14 {
+                            &:nth-child(#{$i}) {
+                                animation-delay: $i * 100ms;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -335,6 +354,17 @@
                 padding: 1ch;
             }
         }
+    }
+}
+
+@keyframes letter_in {
+    0% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 

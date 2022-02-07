@@ -607,9 +607,24 @@ export default class profile extends Component {
                                             "Φαίνεται ότι δεν έχεις ακόμη προτάσεις. Μπορείς να δημιουργείσεις την πρώτη σου πρώταση για ένα τραγούδι "} 
                                         <Link href={"/suggestions"}>{lang === "EN" ? "here" : "εδώ" }</Link>
                                     </p>
-                                    <div className={style.suggestions_not_exist_div}>
-                                        <SqueareAnimation text={"Add Suggestion"} />
-                                    </div>
+                                    {/* <div className={style.suggestions_not_exist_div}>
+                                        <div aria-label={"Add Suggestion"} className={style.animation_div_letters}>
+                                            <div>A</div>
+                                            <div>D</div>
+                                            <div>D</div>
+                                            <div>&nbsp;</div>
+                                            <div>S</div>
+                                            <div>U</div>
+                                            <div>G</div>
+                                            <div>G</div>
+                                            <div>E</div>
+                                            <div>S</div>
+                                            <div>T</div>
+                                            <div>I</div>
+                                            <div>O</div>
+                                            <div>N</div>
+                                        </div>
+                                    </div> */}
                                 </div>
                             }
                         </div>
@@ -679,6 +694,6 @@ export const getStaticPaths = async () => {
 
     return {
         paths: paths,
-        fallback: false
+        fallback: 'blocking'
     }
 }
