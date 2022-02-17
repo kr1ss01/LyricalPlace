@@ -599,7 +599,7 @@ export default class Signup extends Component {
                             <p>
                                 {lang === "EN" ? 
                                 <>
-                                    Already have an account? <Link href="/singin">Sign in here!</Link>
+                                    Already have an account? <Link href="/signin">Sign in here!</Link>
                                 </>
                                 :
                                 <>

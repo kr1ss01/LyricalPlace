@@ -46,6 +46,7 @@ export default class profile extends Component {
         this.handleSuggestionDeletionConfirm = this.handleSuggestionDeletionConfirm.bind(this);
     }
 
+
     async getFav(index) {
 
         try {

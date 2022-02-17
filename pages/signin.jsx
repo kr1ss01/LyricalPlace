@@ -278,7 +278,7 @@ export default class signin extends Component {
                             <p>
                                 {lang === "EN" ? 
                                     <>
-                                        Don't have an account? <Link href="/singup">Sign up here!</Link>
+                                        Don't have an account? <Link href="/signup">Sign up here!</Link>
                                     </>
                                     :
                                     <>

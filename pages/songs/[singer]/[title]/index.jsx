@@ -24,6 +24,14 @@ export default class index extends Component {
         messageLike: "",
     }
 
+    async componentDidMount() {
+        const { data } = this.props;
+
+        const send = await fetch(`${process.env.NEXT_PUBLIC_PROXY_GLOBAL}api/lyrics/views/${data._id}`);
+
+        console.log(send.status, data._id)
+    }
+
     async handleFavouarites (id, uid) {
 
         try {
@@ -261,7 +269,7 @@ export const getStaticProps = async (context) => {
 
     const data = await res.json();
 
-    const send = await fetch(`${process.env.PROXY}api/lyrics/views/${data.post._id}`);
+    // const send = await fetch(`${process.env.PROXY}api/lyrics/views/${data.post._id}`);
   
     return {
       props: {

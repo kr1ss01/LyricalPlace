@@ -1,10 +1,6 @@
 import style from '../styles/404.module.scss';
 import Link from 'next/link';
 import Meta from '../Components/Meta';
-import Image from 'next/image';
-
-// SVG
-import ROBOT from '../SVG/broken_robot_32.png';
 
 export default function Custom404() {
     return (

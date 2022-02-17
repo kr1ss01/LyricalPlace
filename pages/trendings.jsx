@@ -121,7 +121,7 @@ export default class trendings extends Component {
   }
 }
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const res = await fetch(`${process.env.PROXY}api/lyrics/top/views/5`);
 
   const data = await res.json();
